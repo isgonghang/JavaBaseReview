@@ -1,5 +1,5 @@
 ArrayList是基于数组的数据结构，ArrayList是以数组的方式存放数据的，Object[]，如下所示
-![avatar](../ArrayListDataStructure.png)
+![avatar](./ArrayListDataStructure.png)
 ```
 private static final Object[] EMPTY_ELEMENTDATA = {};
 ```
