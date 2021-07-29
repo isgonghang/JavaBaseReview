@@ -42,6 +42,7 @@ LinkedList总共有三个初始变量，分别是：
 *注意：first 和 last 是由引用类型 Node 连接的，这是它的一个内部类。*
 
 **二、内部类Node节点**
+
 ```java
 private static class Node<E> {
         E item;
@@ -58,6 +59,7 @@ private static class Node<E> {
 LinkedList 是通过双向链表实现的，而双向链表就是通过 Node 类来实现的，Node 类中通过 item 变量存储当前元素，通过 next 变量指向当前节点的下一个节点，通过 prev 变量指向当前节点的上一个节点。
 
 **三、构造函数**
+
 1. 无参构造方法
 LinkedList 的无参构造就是构造一个空的 list 集合。
 ```java
@@ -75,6 +77,7 @@ LinkedList 的无参构造就是构造一个空的 list 集合。
     }
 ```
 **四、常用方法**
+
 1. 新增元素：add(E e) 方法，将指定的元素**追加到此列表的末尾**
 ```java
     public boolean add(E e) {
