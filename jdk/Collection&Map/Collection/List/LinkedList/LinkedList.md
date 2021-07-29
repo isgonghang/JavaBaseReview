@@ -1,3 +1,5 @@
+**概述**
+
 LinkedList 是基于双向循环链表数据结构设计的，
 **ArrayList 和 LinkedList 的区别**
 1. 二者线程都不安全，但是效率比 Vector 的高；

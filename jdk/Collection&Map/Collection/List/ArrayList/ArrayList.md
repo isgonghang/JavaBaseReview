@@ -1,10 +1,34 @@
+**概述**
+
 ArrayList是基于数组的数据结构，ArrayList是以数组的方式存放数据的，Object[]，如下所示
-![avatar](./ArrayListDataStructure.png)
 ```java
-private static final Object[] EMPTY_ELEMENTDATA = {};
+    private static final Object[] EMPTY_ELEMENTDATA = {};
 ```
 
-**ArrayList构造函数**
+**一、ArrayList初始属性**
+```java
+public class ArrayList<E> extends AbstractList<E>
+        implements List<E>, RandomAccess, Cloneable, java.io.Serializable
+{
+    private static final long serialVersionUID = 8683452581122892189L;
+
+    // 默认初始容量
+    private static final int DEFAULT_CAPACITY = 10;
+
+    // 初始空数组对象
+    private static final Object[] EMPTY_ELEMENTDATA = {};
+
+    // 初始容量为0时的空数组对象
+    private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
+
+    // 存放元素数组对象、且整个数组对象不可序列化
+    transient Object[] elementData;
+
+    // 数组大小
+    private int size;
+```
+
+**二、ArrayList构造函数**
 
 首先分析构造函数，ArrayList共有三个构造函数，分别为：
 
@@ -53,7 +77,7 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
     }
 ```
 ***
-**ArrayList扩容机制**
+**三、ArrayList扩容机制**
 
 接下来分析新增一个元素时，ArrayList的扩容机制，ArrayList新增元素主要方法如下：
 
