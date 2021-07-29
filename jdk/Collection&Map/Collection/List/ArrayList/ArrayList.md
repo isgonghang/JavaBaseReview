@@ -1,6 +1,6 @@
 ArrayList是基于数组的数据结构，ArrayList是以数组的方式存放数据的，Object[]，如下所示
 ![avatar](./ArrayListDataStructure.png)
-```
+```java
 private static final Object[] EMPTY_ELEMENTDATA = {};
 ```
 
@@ -10,13 +10,13 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
 
 1. ArrayList()构造一个初始容量为0的空列表（新增元素时才进行扩容，此处的elementData默认赋值的是一个空列表）
    
-```
+```java
 	private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 
 	public ArrayList() { this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA; }
 ```
 2. ArrayList(int initialCapacity)构造一个具有指定初始容量的空列表，此处初始容量由调用方赋值
-```
+```java
 	private static final Object[] EMPTY_ELEMENTDATA = {};
 
 	public ArrayList(int initialCapacity) {
@@ -34,7 +34,7 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
     }
 ```
 3. ArrayList(Collection<? extends E> c)构造一个包含指定collection的元素的列表，这些元素是按照该collection的迭代器返回它们的顺序排列的。
-```
+```java
 	public ArrayList(Collection<? extends E> c) {
         // 将入参集合转化为数组
         elementData = c.toArray();
@@ -57,7 +57,7 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
 
 接下来分析新增一个元素时，ArrayList的扩容机制，ArrayList新增元素主要方法如下：
 
-```
+```java
     public boolean add(E e) {
         // 此处size为当前集合元素个数，size+1计算新增元素后的集合大小，确认是否需要扩容
         ensureCapacityInternal(size + 1);  // Increments modCount!!
@@ -109,12 +109,12 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
 
 ***
 **ArrayList序列化问题**
-```
+```java
 transient Object[] elementData;
 ```
 ArrayList在初始化elementData时，将元素用transient修饰，意味着elementData数组不能被序列化
 这是因为序列化ArrayList的时候，ArrayList里面的elementData数组未必是满的，比如elementData的大小为10，但只用了其中的3个，显然没有必要序列化整个elementData，因此ArrayList中重写了writeObject方法：
-```
+```java
     private void writeObject(java.io.ObjectOutputStream s)
         throws java.io.IOException{
         // Write out element count, and any hidden stuff
