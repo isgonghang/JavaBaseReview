@@ -1,4 +1,4 @@
-首先分析构造函数，ArrayList共有三个构造函数，分别为：
+ArrayList是基于数组的数据结构，首先分析构造函数，ArrayList共有三个构造函数，分别为：
 
 1. ArrayList()构造一个初始容量为0的空列表（新增元素时才进行扩容，此处的elementData默认赋值的是一个空列表）
    
@@ -45,11 +45,11 @@
     }
 ```
 ***
-接下来分析新增一个元素时，ArrayList的扩容机制，ArrayList新增元素总共有两个方法
-1. 
+接下来分析新增一个元素时，ArrayList的扩容机制，ArrayList新增元素主要方法如下：
+
 ```
 	public boolean add(E e) {
-		// 此处size为当前集合元素个数，size+1计算新增元素后的集合大小，确认是否需要扩容
+        // 此处size为当前集合元素个数，size+1计算新增元素后的集合大小，确认是否需要扩容
         ensureCapacityInternal(size + 1);  // Increments modCount!!
         // 将元素放入下一个空值位置
         elementData[size++] = e;
