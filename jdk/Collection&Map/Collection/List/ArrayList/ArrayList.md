@@ -1,4 +1,8 @@
-ArrayList是基于数组的数据结构，首先分析构造函数，ArrayList共有三个构造函数，分别为：
+ArrayList是基于数组的数据结构，ArrayList是以数组的方式存放数据的，Object[]，如下所示
+```
+private static final Object[] EMPTY_ELEMENTDATA = {};
+```
+首先分析构造函数，ArrayList共有三个构造函数，分别为：
 
 1. ArrayList()构造一个初始容量为0的空列表（新增元素时才进行扩容，此处的elementData默认赋值的是一个空列表）
    
