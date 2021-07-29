@@ -100,3 +100,33 @@ private static final Object[] EMPTY_ELEMENTDATA = {};
         elementData = Arrays.copyOf(elementData, newCapacity);
     }
 ```
+
+***
+*ArrayList序列化问题*
+
+```
+transient Object[] elementData;
+```
+ArrayList在初始化elementData时，将元素用transient修饰，意味着elementData数组不能被序列化
+这是因为序列化ArrayList的时候，ArrayList里面的elementData数组未必是满的，比如elementData的大小为10，但只用了其中的3个，显然没有必要序列化整个elementData，因此ArrayList中重写了writeObject方法：
+```
+    private void writeObject(java.io.ObjectOutputStream s)
+        throws java.io.IOException{
+        // Write out element count, and any hidden stuff
+        int expectedModCount = modCount;
+        s.defaultWriteObject();
+
+        // Write out size as capacity for behavioural compatibility with clone()
+        s.writeInt(size);
+
+        // Write out all elements in the proper order.
+        for (int i=0; i<size; i++) {
+            s.writeObject(elementData[i]);
+        }
+
+        if (modCount != expectedModCount) {
+            throw new ConcurrentModificationException();
+        }
+    }
+```
+每次序列化的时候调用这个方法，先调用defaultWriteObject()方法序列化ArrayList中的非transient元素，elementData这个数组对象不去序列化它，而是遍历elementData，只序列化数组里面有数据的元素，这样一来，就可以加快序列化的速度，还能够减少空间的开销。
