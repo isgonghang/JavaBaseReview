@@ -32,7 +32,9 @@ public class LinkedList<E>
 LinkedList总共有三个初始变量，分别是：
 
 **size：** 双向链表的节点个数
+
 **first：** 双向链表指向头节点的指针
+
 **last：** 双向链表指向尾节点的指针
 
 *注意：first 和 last 是由引用类型 Node 连接的，这是它的一个内部类。*
