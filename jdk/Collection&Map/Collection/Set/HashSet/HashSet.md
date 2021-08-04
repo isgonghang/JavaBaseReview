@@ -58,6 +58,16 @@ public class HashSet<E>
 ***
 **三、HashSet扩容机制**
 	HashSet底层为HashMap，扩容机制与HashMap一致，参照HashMap扩容机制
+
+1. 新增元素
+```java
+	// 与映射中的Key关联的Value虚拟值
+    private static final Object PRESENT = new Object();
+
+	public boolean add(E e) {
+        return map.put(e, PRESENT)==null;
+    }
+```
 ***
 **四、HashSet底层机制**	
 1. HashSet底层是HashMap
