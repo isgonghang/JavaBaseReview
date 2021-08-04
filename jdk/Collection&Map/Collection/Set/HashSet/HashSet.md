@@ -1,11 +1,12 @@
 **概述**
 
-1. HashSet实现了Set接口
+1. HashSet实现了Set接口，底层是HashMap，HashMap底层维护了一个数组+单向链表（同一数组元素上）
 2. HashSet实际上是HashMap，Key为存入元素值，Value默认为静态对象PRESENT
-```java
-	private static final Object PRESENT = new Object();
 
-	public HashSet() {
+```java
+    private static final Object PRESENT = new Object();
+
+    public HashSet() {
         map = new HashMap<>();
     }
 ```
@@ -57,14 +58,15 @@ public class HashSet<E>
 ```
 ***
 **三、HashSet扩容机制**
-	HashSet底层为HashMap，扩容机制与HashMap一致，参照HashMap扩容机制
+
+HashSet底层为HashMap，扩容机制与HashMap一致，参照HashMap扩容机制
 
 1. 新增元素
 ```java
-	// 与映射中的Key关联的Value虚拟值
+    // 与映射中的Key关联的Value虚拟值
     private static final Object PRESENT = new Object();
 
-	public boolean add(E e) {
+    public boolean add(E e) {
         return map.put(e, PRESENT)==null;
     }
 ```
