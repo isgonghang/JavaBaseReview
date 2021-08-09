@@ -1,5 +1,5 @@
-# OriginCodeAnalysis
-Java源码分析及个人总结，主要包括：
-JDK源码及类库分析
+# Java Base Review
+## Java基础知识巩固
 
-扩展中......
+1. Java集合及源码分析 -- Collections
+2. Java并发编程深入   -- JUC
